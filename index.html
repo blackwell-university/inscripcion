@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Soporte Académico - Blackwell University</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Core Styles -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Serif 4', serif;
+            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container-form {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .info-box {
+            background: linear-gradient(to bottom, #0056b3, #003b80);
+            padding: 40px;
+            color: white;
+            width: 35%;
+            border-radius: 16px 0 0 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-box img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h5 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .form-container {
+            width: 65%;
+            padding: 30px 35px;
+            background-color: #ffffff;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .form-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border: 1px solid #a0a0a0;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .mandatory-field::after {
+            content: '*';
+            color: #666;
+            margin-left: 4px;
+            font-size: 12px;
+        }
+
+        .btn-primary {
+            background-color: #0056b3;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 30px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #003b80;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: #333;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 30px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .row.mb-3 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                align-items: flex-start;
+                padding: 15px;
+            }
+            .container-form {
+                flex-direction: column;
+            }
+            .info-box {
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                padding: 25px;
+            }
+            .form-container {
+                width: 100%;
+                border-radius: 0 0 16px 16px;
+                padding: 20px;
+            }
+            .form-header h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://d17nz991552y2g.cloudfront.net/app/js/jqueryandencoder.ef05974972bf3bca1b87.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-form row">
+            <!-- Info Column -->
+            <div class="info-box">
+                <img src="https://cdn.bitrix24.es/b15495391/landing/d83/d8337f03f6e3aaff5c6df748f7fc5593/logo_bgu_1x.png" alt="Logo BGU">
+                <h5>Soporte Estudiantil</h5>
+                <p>Completa el formulario para recibir asistencia personalizada sobre nuestras maestrías.</p>
+            </div>
+            <!-- Form Column -->
+            <div class="form-container">
+                <form enctype="multipart/form-data">
+                    <!-- Form Header -->
+                    <div class="form-header">
+                        <h3>Formulario de Postulación</h3>
+                    </div>
+                    
+                    <!-- Nombre y Apellido -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">Nombres del postulante <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="firstName" name="First Name" maxlength="120" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Apellidos del postulante <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="lastName" name="Last Name" maxlength="120" required>
+                        </div>
+                    </div>
+
+                    <!-- País y Ciudad -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="country" class="form-label">País <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="country" name="Country" maxlength="100" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="city" class="form-label">Ciudad <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="city" name="City" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <!-- Celular y Número de DNI -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Celular <span class="mandatory-field"></span></label>
+                            <input type="tel" class="form-control" id="phone" name="Phone" maxlength="20" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dni" class="form-label">Número de DNI <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="dni" name="DNI" maxlength="20" required>
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Nacimiento y Ocupación -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="birthDate" class="form-label">Fecha de Nacimiento <span class="mandatory-field"></span></label>
+                            <input type="date" class="form-control" id="birthDate" name="Birth Date" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="occupation" class="form-label">Ocupación <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="occupation" name="Occupation" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <!-- Selección de Maestría -->
+                    <div class="mb-3">
+                        <label for="masterProgram" class="form-label">Maestría de interés <span class="mandatory-field"></span></label>
+                        <select class="form-select" id="masterProgram" name="Master Program" required>
+                            <option value="" disabled selected>Seleccione una maestría</option>
+                            <option value="MBA">Maestría en Administración de Empresa - MBA</option>
+                            <option value="Health Management">Maestría en Gestión de Salud</option>
+                            <option value="Hotel Management">Maestría en Gestión Hotelera</option>
+                            <option value="AI">Maestría en Inteligencia Artificial</option>
+                            <option value="Project Management">Maestría en Gestión de Proyectos</option>
+                            <option value="Cybersecurity">Maestría en Ciberseguridad</option>
+                            <option value="Criminology">Maestría en Criminología</option>
+                            <option value="Renewable Energy">Maestría en Energía Renovable y Sistemas Sostenibles</option>
+                        </select>
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-2">Enviar</button>
+                            <button type="button" class="btn btn-secondary">Restablecer</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="form-footer">
+                        <span>Desarrollado por Blackwell University</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
