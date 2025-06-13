@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- Core Styles -->
     <style>
@@ -16,7 +18,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Source Serif 4', serif;
-            background-image: url('https://campus.blackwell.university/pluginfile.php/1/theme_alpha/loginbg/1731598420/portada-campus-virtual.jpg');
+            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -192,6 +194,7 @@
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://d17nz991552y2g.cloudfront.net/app/js/jqueryandencoder.ef05974972bf3bca1b87.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 
 <body>
@@ -205,7 +208,7 @@
             </div>
             <!-- Form Column -->
             <div class="form-container">
-                <form enctype="multipart/form-data">
+                <form id="inscripcion-form" enctype="multipart/form-data">
                     <!-- Form Header -->
                     <div class="form-header">
                         <h3>Formulario de Inscripción</h3>
@@ -235,15 +238,29 @@
                         </div>
                     </div>
 
-                    <!-- Celular y Número de DNI -->
+                    <!-- Celular y Tipo de Identificación -->
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Celular <span class="mandatory-field"></span></label>
                             <input type="tel" class="form-control" id="phone" name="Phone" maxlength="20" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="dni" class="form-label">Número de DNI <span class="mandatory-field"></span></label>
-                            <input type="text" class="form-control" id="dni" name="DNI" maxlength="20" required>
+                            <label for="idType" class="form-label">Tipo de Identificación <span class="mandatory-field"></span></label>
+                            <select class="form-select" id="idType" name="ID Type" required>
+                                <option value="" disabled selected>Seleccione un tipo</option>
+                                <option value="Passport">Pasaporte</option>
+                                <option value="National ID">Cédula de Identidad / ID Nacional</option>
+                                <option value="Driver's License">Licencia de Conducir</option>
+                                <option value="Other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Número de Identificación -->
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="idNumber" class="form-label">Número de Identificación <span class="mandatory-field"></span></label>
+                            <input type="text" class="form-control" id="idNumber" name="ID Number" maxlength="20" placeholder="Ej. 123456789 o A123456" required>
                         </div>
                     </div>
 
@@ -264,14 +281,14 @@
                         <label for="masterProgram" class="form-label">Maestría de interés <span class="mandatory-field"></span></label>
                         <select class="form-select" id="masterProgram" name="Master Program" required>
                             <option value="" disabled selected>Seleccione una maestría</option>
-                            <option value="MBA">Maestría en Administración de Empresa - MBA</option>
-                            <option value="Health Management">Maestría en Gestión de Salud</option>
-                            <option value="Hotel Management">Maestría en Gestión Hotelera</option>
-                            <option value="AI">Maestría en Inteligencia Artificial</option>
-                            <option value="Project Management">Maestría en Gestión de Proyectos</option>
-                            <option value="Cybersecurity">Maestría en Ciberseguridad</option>
-                            <option value="Criminology">Maestría en Criminología</option>
-                            <option value="Renewable Energy">Maestría en Energía Renovable y Sistemas Sostenibles</option>
+                            <option value="Master MBA">Maestría en Administración de Empresa - MBA</option>
+                            <option value="Master Health Management">Maestría en Gestión de Salud</option>
+                            <option value="Master Hotel Management">Maestría en Gestión Hotelera</option>
+                            <option value="Master AI">Maestría en Inteligencia Artificial</option>
+                            <option value="Master Project Management">Maestría en Gestión de Proyectos</option>
+                            <option value="Master Cybersecurity">Maestría en Ciberseguridad</option>
+                            <option value="Master Criminology">Maestría en Criminología</option>
+                            <option value="Master Renewable Energy">Maestría en Energía Renovable y Sistemas Sostenibles</option>
                         </select>
                     </div>
 
@@ -291,5 +308,76 @@
             </div>
         </div>
     </div>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        const form = document.getElementById('inscripcion-form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Mostrar alerta de carga
+            Swal.fire({
+                title: 'Enviando...',
+                text: 'Por favor espera mientras procesamos tu formulario.',
+                icon: 'info',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    // Forzar altura del body después de abrir el modal
+                    document.body.style.height = '100vh';
+                    document.body.style.overflow = 'hidden';
+                },
+                willClose: () => {
+                    // Restaurar el estilo del body si es necesario
+                    document.body.style.height = '';
+                    document.body.style.overflow = '';
+                },
+            });
+
+            const formData = new FormData(form);
+            formData.append('hoja', 'registros'); // Add hoja parameter
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycby_E0gUMPypeR2O6Rkf7-tvYKRtijCJzZiu1TiF0x943aafr4b0ApfwmYz2lXEikIAuQQ/exec', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                Swal.close(); // Cierra la alerta de carga
+
+                if (response.ok) { // Mostrar alerta de éxito
+                    Swal.fire({
+                        title: '¡Formulario enviado con éxito!',
+                        text: 'Gracias por tu envio. 👩‍💻 Una asesora se comunicará contigo para proceder con la inscripción.',
+                        icon: 'success',
+                        imageWidth: 80,
+                        imageHeight: 80
+                    });
+                    form.reset();
+                } else {
+                    // Mostrar alerta de error
+                    Swal.fire({
+                        title: 'Error al enviar el formulario',
+                        text: 'Por favor, inténtalo nuevamente más tarde.',
+                        icon: 'error',
+                        imageWidth: 80,
+                        imageHeight: 80
+                    });
+                }
+            } catch (error) {
+                // Manejo de errores
+                Swal.close();
+                Swal.fire({
+                    title: 'Error de conexión',
+                    text: 'No pudimos procesar tu formulario. Por favor, verifica tu conexión e inténtalo de nuevo.',
+                    icon: 'error',
+                    imageWidth: 80,
+                    imageHeight: 80
+                });
+                console.error(error);
+            }
+        });
+    </script>
 </body>
 </html>
