@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Admisión - Blackwell University</title>
+    <title>Admisión Maestría - Blackwell University</title>
      <link rel="icon" type="image/png" href="https://cdn.bitrix24.es/b15495391/landing/e79/e79fb239ff37e96e3340ef1ed8782f6c/Logotipo-Blackwell_1x.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -212,10 +212,10 @@
                     <!-- Form Header -->
                     <div class="form-header">
                         <h3 class="form-title">¡Comienza tu futuro en Blackwell University!</h3>
-                        <p class="form-subtitle">Formulario de Inscripción al programa de Licenciaturas - Bachelor 2025</p>
+                        <p class="form-subtitle">Formulario de Inscripción al programa de Maestrías 2025 🎓 </p>
                         <div class="form-instructions">
-                            <p style="font-size:12px;">Por favor completa tus datos personales para iniciar tu proceso de admisión.</p>
-                            <p class="note" style="font-size:12px;">Todos los campos son obligatorios (*)</p>
+                            <span style="font-size: 12px;">Por favor completa tus datos personales para iniciar tu proceso de admisión.</span>
+                            <span class="note" style="font-size: 12px;">Todos los campos son obligatorios (*)</span>
                         </div>
                     </div>
                     
@@ -249,6 +249,15 @@
                             <label for="phone" class="form-label">Celular <span class="mandatory-field"></span></label>
                             <input type="tel" class="form-control" id="phone" name="Phone" maxlength="20" required>
                         </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Correo Electrónico <span class="mandatory-field"></span></label>
+                            <input type="email" class="form-control" id="email" name="email"  required>
+                        </div>                        
+                    </div>
+
+                    <!-- Número de Identificación -->
+                    <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="idType" class="form-label">Tipo de Identificación <span class="mandatory-field"></span></label>
                             <select class="form-select" id="idType" name="ID Type" required>
@@ -257,11 +266,7 @@
                                 <option value="National ID">Cédula de Identidad / ID Nacional</option>                                
                             </select>
                         </div>
-                    </div>
-
-                    <!-- Número de Identificación -->
-                    <div class="row mb-3">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="idNumber" class="form-label">Número de Identificación <span class="mandatory-field"></span></label>
                             <input type="text" class="form-control" id="idNumber" name="ID Number" maxlength="20" placeholder="Ej. 123456789 o A123456" required>
                         </div>
@@ -348,7 +353,7 @@
                 if (response.ok) { // Mostrar alerta de éxito
                     Swal.fire({
                         title: '¡Formulario enviado con éxito!',
-                        text: 'Gracias por tu envio. 👩‍💻 Una asesora se comunicará contigo para proceder con la inscripción.',
+                        text: 'Gracias por tu envio. 👩‍💻 Una asesora se comunicará contigo para proceder con la inscripción. Recuerda preparar la documentación necesaria para el registro de admisión.📃',
                         icon: 'success',
                         imageWidth: 80,
                         imageHeight: 80
